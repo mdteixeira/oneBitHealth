@@ -1,7 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import Title from './src/components/Title';
-import Main from './src/components/Main';
 import Form from './src/components/Form';
 
 export default function App() {
@@ -17,6 +15,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
-    paddingTop:80,
+    paddingTop: 80,
   },
 });
