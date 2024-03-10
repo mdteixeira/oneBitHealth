@@ -13,6 +13,8 @@ const styles = StyleSheet.create({
   form: {
     width: '100%',
     height: 'auto',
+    // flex: 1,
+    // justifyContent: 'center',
   },
   formLabel: {
     color: '#000',
@@ -20,10 +22,9 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   input: {
-    width: '90%',
     borderRadius: 10,
     backgroundColor: '#f6f6f6',
-    height: 40,
+    height: 45,
     margin: 12,
     paddingLeft: 20,
   },
@@ -35,12 +36,12 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    width: '90%',
     backgroundColor: '#FF0043',
     paddingTop: 14,
     paddingBottom: 14,
-    marginLeft: 12,
     marginTop: 30,
+    width: '80%',
+    marginLeft: '10%',
   },
   errorMessage: {
     fontSize: 12,
@@ -51,7 +52,40 @@ const styles = StyleSheet.create({
   },
   exhibitionResultImc: {
     width: '100%',
-    height: '50%',
+    height: '33%',
+  },
+  listImcs: {
+    marginTop: 20,
+    width: '100%',
+  },
+  resultImcItem: {
+    fontSize: 20,
+    color: 'red',
+    fontWeight: '500',
+  },
+  resultImcData: {
+    fontSize: 16,
+  },
+  viewResultadosButton: {
+    paddingHorizontal: 20,
+    marginTop: 50,
+    backgroundColor: '#ddd',
+    borderRadius: 50,
+    paddingVertical: 10,
+    marginVertical: 10,
+  },
+  resultadosButtonText: {
+    color: 'black',
+  },
+  listItem: {
+    flex: 1,
+    height: 50,
+    paddingHorizontal: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    backgroundColor: '#fafafa',
   },
 });
 

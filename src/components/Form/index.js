@@ -6,6 +6,7 @@ import {
   Keyboard,
   Vibration,
   Pressable,
+  FlatList,
 } from 'react-native';
 import React, { useState } from 'react';
 import ResultImc from './resultImc';
@@ -19,14 +20,17 @@ export default function Form() {
   const [messageImc, setMessageImc] = useState('Preencha o peso e altura');
   const [textButton, setTextButton] = useState('Calcular');
   const [errorMessage, setErrorMessage] = useState(null);
+  const [mostrarResultados, setMostrarResultados] = useState(false);
+
+  const [imcList, setImcList] = useState([]);
 
   function calculaImc() {
-    return setImc(
-      (
-        peso.replace(',', '.') /
-        (altura.replace(',', '.') * altura.replace(',', '.'))
-      ).toFixed(2)
-    );
+    let totalIMC = (
+      peso.replace(',', '.') /
+      (altura.replace(',', '.') * altura.replace(',', '.'))
+    ).toFixed(2);
+    setImcList((arr) => [...arr, { id: new Date().toLocaleDateString(), imc: totalIMC }]);
+    setImc(totalIMC);
   }
 
   function verificationImc() {
@@ -98,6 +102,32 @@ export default function Form() {
             <Text style={styles.botaoCalcularTexto}>{textButton}</Text>
           </TouchableOpacity>
         </View>
+      )}
+      <TouchableOpacity
+        title={textButton}
+        onPress={() => setMostrarResultados(!mostrarResultados)}
+        style={styles.viewResultadosButton}
+      >
+        <Text style={styles.resultadosButtonText}>
+          {mostrarResultados ? 'Ocultar Resultados' : 'Mostrar Resultados'}
+        </Text>
+      </TouchableOpacity>
+      {mostrarResultados && (
+        <FlatList
+          style={styles.listImcs}
+          data={[...imcList].reverse()}
+          renderItem={({ item }) => {
+            return (
+              <View style={styles.listItem}>
+                <Text style={styles.resultImcItem}>{item.imc}</Text>
+                <Text style={styles.resultImcData}>{item.id}</Text>
+              </View>
+            );
+          }}
+          keyExtractor={(item) => {
+            item.id;
+          }}
+        />
       )}
     </View>
   );
